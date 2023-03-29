@@ -12,3 +12,11 @@
 .document-page {
 
 }
+
+.annotation {
+  position: relative;
+  z-index: 99;
+  background-color: yellow;
+  opacity: 75%;
+  padding: 8px;
+}

@@ -1,3 +1,8 @@
 <div class="document-page" *ngFor="let page of document?.pages; let i = index">
-  <img [src]="page.imageUrl" [alt]="'Page ' + (i + 1)">
+  <div
+    *ngFor="let annotation of page?.annotations"
+    class="annotation"
+    [ngStyle]="calculateAnnotationNgStyle(annotation)"
+  >{{annotation.content}}</div>
+  <img [src]="page.imageUrl" [alt]="'Page ' + (i + 1)" [ngStyle]="calculateNegativeMargin(page)">
 </div>
