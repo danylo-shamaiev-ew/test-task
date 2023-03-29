@@ -20,16 +20,19 @@ export class DocumentService {
               coordinates: [16, 16],
               size: [50, 100],
               content: 'Test annotation 1',
+              type: 'text',
             },
             {
               coordinates: [333, 430],
               size: [100, 100],
               content: 'Test annotation 2',
+              type: 'text',
             },
             {
               coordinates: [460, 460],
               size: [100, 100],
               content: 'Test annotation 3',
+              type: 'text',
             },
           ]
         },
@@ -40,6 +43,7 @@ export class DocumentService {
               coordinates: [30, 42],
               size: [50, 100],
               content: 'Test annotation',
+              type: 'text',
             },
           ]
         },

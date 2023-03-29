@@ -16,14 +16,58 @@ import {fromEvent, takeUntil, tap} from 'rxjs';
 })
 export class DocumentComponent {
   @Input() document!: Document;
+  public newAnnotationText = '';
+  public newAnnotationImageUrl = '';
+  public isNewAnnotationCreating = false;
 
   constructor(private readonly cdRef: ChangeDetectorRef) {}
+
+  public handleAddAnnotation($event: MouseEvent, pageIndex: number) {
+    $event.stopPropagation();
+    if (this.isNewAnnotationCreating) return;
+    const newDocument = {...this.document};
+    if (!newDocument.pages[pageIndex].annotations) {
+      newDocument.pages[pageIndex].annotations = [];
+    }
+    // @ts-ignore
+    newDocument.pages[pageIndex].annotations.push({
+      coordinates: [$event.offsetX, $event.offsetY],
+      size: [200, 200],
+      content: '',
+    });
+    this.document = newDocument;
+    this.isNewAnnotationCreating = true;
+  }
+
+  public handleSaveAnnotationAsText(pageIndex:number, annotationIndex: number) {
+    const newDocument = {...this.document};
+    // @ts-ignore
+    newDocument.pages[pageIndex].annotations[annotationIndex].type = 'text';
+    // @ts-ignore
+    newDocument.pages[pageIndex].annotations[annotationIndex].content = this.newAnnotationText;
+    this.document = newDocument;
+    this.isNewAnnotationCreating = false;
+  }
+
+  public handleSaveAnnotationAsImage(pageIndex:number, annotationIndex: number) {
+    const newDocument = {...this.document};
+    // @ts-ignore
+    newDocument.pages[pageIndex].annotations[annotationIndex].type = 'image';
+    // @ts-ignore
+    newDocument.pages[pageIndex].annotations[annotationIndex].content = this.newAnnotationImageUrl;
+    this.document = newDocument;
+    this.isNewAnnotationCreating = false;
+  }
 
   public handleRemoveAnnotation($event: Event, pageIndex: number, annotationIndex: number) {
     $event.stopPropagation();
     const newDocument = {...this.document};
     newDocument.pages[pageIndex].annotations?.splice(annotationIndex, 1);
     this.document = newDocument;
+  }
+
+  public emptyHandler($event: Event) {
+    $event.stopPropagation();
   }
 
   public handleAnnotationDrag($event: Event, pageIndex: number, annotationIndex: number) {

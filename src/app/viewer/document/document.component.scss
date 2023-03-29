@@ -25,6 +25,15 @@
   &:active {
     cursor: grabbing;
   }
+
+  textarea {
+    width: 98%;
+    max-width: 98%;
+  }
+
+  .save-image {
+    margin-top: 8px;
+  }
 }
 
 .annotation-close-button {
@@ -40,4 +49,8 @@
   text-align: center;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.annotation-content {
+  margin-top: -16px;
 }

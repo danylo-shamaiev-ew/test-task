@@ -1,14 +1,30 @@
-<div class="document-page" *ngFor="let page of document?.pages; let p = index">
+<div
+  class="document-page"
+  *ngFor="let page of document?.pages; let p = index"
+  (click)="handleAddAnnotation($event, p)"
+>
   <div
     *ngFor="let annotation of page?.annotations; let a = index"
     class="annotation"
     [ngStyle]="calculateAnnotationNgStyle(page, annotation, a)"
     (mousedown)="handleAnnotationDrag($event, p, a)"
+    (click)="emptyHandler($event)"
   >
-    <span
-      class="annotation-close-button" (click)="handleRemoveAnnotation($event, p, a)"
-    >X</span>
-    {{annotation.content}}
+    <span class="annotation-close-button" (click)="handleRemoveAnnotation($event, p, a)">X</span>
+    <div class="annotation-content" *ngIf="annotation.type === 'text'">{{annotation.content}}</div>
+    <img
+      class="annotation-content"
+      [src]="annotation.content"
+      alt="annotation image"
+      *ngIf="annotation.type === 'image'"
+    >
+    <div *ngIf="!annotation.type">
+      <textarea placeholder="Type here..." [(ngModel)]="newAnnotationText"></textarea>
+      <input type="button" value="Save" (click)="handleSaveAnnotationAsText(p, a)">
+      <p>or</p>
+      <input type="url" placeholder="Type image URL..." [(ngModel)]="newAnnotationImageUrl">
+      <input class="save-image" type="button" value="Save image" (click)="handleSaveAnnotationAsImage(p, a)">
+    </div>
   </div>
   <img [src]="page.imageUrl" [alt]="'Page ' + (p + 1)" [ngStyle]="calculateNegativeMargin(page)">
 </div>
