@@ -20,6 +20,7 @@
   opacity: 75%;
   padding: 8px;
   cursor: grab;
+  user-select: none;
 
   &:active {
     cursor: grabbing;

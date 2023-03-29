@@ -3,6 +3,7 @@
     *ngFor="let annotation of page?.annotations; let a = index"
     class="annotation"
     [ngStyle]="calculateAnnotationNgStyle(page, annotation, a)"
+    (mousedown)="handleAnnotationDrag($event, p, a)"
   >
     <span
       class="annotation-close-button" (click)="handleRemoveAnnotation($event, p, a)"
