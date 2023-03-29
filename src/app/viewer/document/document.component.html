@@ -1,8 +1,13 @@
-<div class="document-page" *ngFor="let page of document?.pages; let i = index">
+<div class="document-page" *ngFor="let page of document?.pages; let p = index">
   <div
-    *ngFor="let annotation of page?.annotations"
+    *ngFor="let annotation of page?.annotations; let a = index"
     class="annotation"
-    [ngStyle]="calculateAnnotationNgStyle(annotation)"
-  >{{annotation.content}}</div>
-  <img [src]="page.imageUrl" [alt]="'Page ' + (i + 1)" [ngStyle]="calculateNegativeMargin(page)">
+    [ngStyle]="calculateAnnotationNgStyle(page, annotation, a)"
+  >
+    <span
+      class="annotation-close-button" (click)="handleRemoveAnnotation($event, p, a)"
+    >X</span>
+    {{annotation.content}}
+  </div>
+  <img [src]="page.imageUrl" [alt]="'Page ' + (p + 1)" [ngStyle]="calculateNegativeMargin(page)">
 </div>

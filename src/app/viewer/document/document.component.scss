@@ -19,4 +19,24 @@
   background-color: yellow;
   opacity: 75%;
   padding: 8px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.annotation-close-button {
+  display: inline-block;
+  position: relative;
+  z-index: 99;
+  background-color: #000000;
+  color: #FFFFFF;
+  top: -24px;
+  left: -24px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
 }

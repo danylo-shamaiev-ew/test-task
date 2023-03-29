@@ -17,19 +17,31 @@ export class DocumentService {
           imageUrl: '../../../../assets/example-document/1.png',
           annotations: [
             {
-              coordinates: [143, 50],
+              coordinates: [16, 16],
               size: [50, 100],
-              content: 'Test annotation',
+              content: 'Test annotation 1',
             },
             {
               coordinates: [333, 430],
               size: [100, 100],
-              content: 'Test annotation',
+              content: 'Test annotation 2',
+            },
+            {
+              coordinates: [460, 460],
+              size: [100, 100],
+              content: 'Test annotation 3',
             },
           ]
         },
         {
           imageUrl: '../../../../assets/example-document/2.png',
+          annotations: [
+            {
+              coordinates: [30, 42],
+              size: [50, 100],
+              content: 'Test annotation',
+            },
+          ]
         },
         {
           imageUrl: '../../../../assets/example-document/3.png',
