@@ -1,0 +1,3 @@
+<div class="document-page" *ngFor="let page of document?.pages; let i = index">
+  <img [src]="page.imageUrl" [alt]="'Page ' + (i + 1)">
+</div>

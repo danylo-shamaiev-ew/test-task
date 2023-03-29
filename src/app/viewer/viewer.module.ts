@@ -1,11 +1,12 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import {ViewerRoutingModule} from './viewer-routing.module';
 import {ViewerComponent} from './viewer.component';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
-  declarations: [ViewerComponent],
-  imports: [CommonModule, ViewerRoutingModule],
+  declarations: [ViewerComponent, DocumentComponent],
+  imports: [CommonModule, ViewerRoutingModule, NgOptimizedImage]
 })
 export class ViewerModule {}

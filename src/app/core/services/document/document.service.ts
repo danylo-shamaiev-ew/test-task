@@ -13,7 +13,19 @@ export class DocumentService {
       id: 1,
       pages: [
         {
-          imageUrl: 'src/assets/example-document/1.png',
+          imageUrl: '../../../../assets/example-document/1.png',
+        },
+        {
+          imageUrl: '../../../../assets/example-document/2.png',
+        },
+        {
+          imageUrl: '../../../../assets/example-document/3.png',
+        },
+        {
+          imageUrl: '../../../../assets/example-document/4.png',
+        },
+        {
+          imageUrl: '../../../../assets/example-document/5.png',
         },
       ]
     });
