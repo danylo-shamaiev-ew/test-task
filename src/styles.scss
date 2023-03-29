@@ -1,1 +1,10 @@
 @import "~node_modules/normalize.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  min-height: 100vh;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
