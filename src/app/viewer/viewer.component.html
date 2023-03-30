@@ -1,9 +1,16 @@
 <header>
   <div class="logo-text">Document Viewer</div>
   <div class="viewer-controls">
+    <span>{{currentZoom}}</span>
+    <input type="button" value="+" (click)="handleZoomIn()">
+    <input type="button" value="-" (click)="handleZoomOut()">
     <input type="button" value="Save" (click)="handleDocumentSave()">
   </div>
 </header>
 <main>
-  <app-document [document]="document" (documentChanged)="handleDocumentChange(document)" />
+  <app-document
+    [document]="document"
+    (documentChanged)="handleDocumentChange(document)"
+    [ngStyle]="appDocumentNgStyle"
+  />
 </main>

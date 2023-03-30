@@ -12,6 +12,8 @@ import {DocumentService} from '../core/services/document/document.service';
 })
 export class ViewerComponent {
   public document!: Document;
+  public currentZoom = 100;
+  public appDocumentNgStyle = {'zoom': '100%'};
 
   constructor(
     private readonly documentService: DocumentService,
@@ -31,5 +33,15 @@ export class ViewerComponent {
 
   public handleDocumentSave() {
     console.log('Document result: ', JSON.stringify(this.document));
+  }
+
+  public handleZoomIn() {
+    this.currentZoom = this.currentZoom + 10;
+    this.appDocumentNgStyle = {'zoom': `${this.currentZoom}%`}
+  }
+
+  public handleZoomOut() {
+    this.currentZoom = this.currentZoom - 10;
+    this.appDocumentNgStyle = {'zoom': `${this.currentZoom}%`}
   }
 }
