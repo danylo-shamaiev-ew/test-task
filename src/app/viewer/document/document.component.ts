@@ -18,13 +18,11 @@ export class DocumentComponent {
   @Input() document!: Document;
   public newAnnotationText = '';
   public newAnnotationImageUrl = '';
-  public isNewAnnotationCreating = false;
 
   constructor(private readonly cdRef: ChangeDetectorRef) {}
 
   public handleAddAnnotation($event: MouseEvent, pageIndex: number) {
     $event.stopPropagation();
-    if (this.isNewAnnotationCreating) return;
     const newDocument = {...this.document};
     if (!newDocument.pages[pageIndex].annotations) {
       newDocument.pages[pageIndex].annotations = [];
@@ -36,7 +34,6 @@ export class DocumentComponent {
       content: '',
     });
     this.document = newDocument;
-    this.isNewAnnotationCreating = true;
   }
 
   public handleSaveAnnotationAsText(pageIndex:number, annotationIndex: number) {
@@ -46,7 +43,6 @@ export class DocumentComponent {
     // @ts-ignore
     newDocument.pages[pageIndex].annotations[annotationIndex].content = this.newAnnotationText;
     this.document = newDocument;
-    this.isNewAnnotationCreating = false;
   }
 
   public handleSaveAnnotationAsImage(pageIndex:number, annotationIndex: number) {
@@ -56,7 +52,6 @@ export class DocumentComponent {
     // @ts-ignore
     newDocument.pages[pageIndex].annotations[annotationIndex].content = this.newAnnotationImageUrl;
     this.document = newDocument;
-    this.isNewAnnotationCreating = false;
   }
 
   public handleRemoveAnnotation($event: Event, pageIndex: number, annotationIndex: number) {
