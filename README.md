@@ -24,9 +24,9 @@ So, every sticky note is a relative-positioned div element. Every time a sticky 
 3. Would be nice to have re-sizing, color, and opacity options.
 4. A real API with image uploading would be great as well.
 
-## Development server
+## How to run it
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/viewer/1`.
 
 ## Code scaffolding
 
