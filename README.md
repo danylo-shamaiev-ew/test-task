@@ -1,6 +1,28 @@
-# VedalmediaTestTask
+# Document Viewer Test Task
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+I've assumed that I cannot use external libraries for sticky note manipulation, so I've implemented it myself.
+
+So, every sticky note is a relative-positioned div element. Every time a sticky note moves, gets added, or is deleted, the page margin and other sticky note offsets get recalculated.
+
+### Pros
+1. It works.
+2. It can be scaled and refactored.
+3. The app itself is lightweight.
+### Cons
+1. The implementation is very naive and straightforward.
+2. Sticky notes are twitchy and buggy (see details below).
+3. There is no fancy output, only a console.
+
+### Known issues
+1. When the sticker is moved, its appearance is twitchy.
+2. When the sticker is moved, a new sticker might be created.
+3. Image stickers do look not so good.
+
+### What should be done
+1. It would be better to take some library for sticky note manipulation, rather than re-inventing it.
+2. There should be some decent unit test coverage.
+3. Would be nice to have re-sizing, color, and opacity options.
+4. A real API with image uploading would be great as well.
 
 ## Development server
 
@@ -13,15 +35,3 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
