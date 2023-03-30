@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy, ChangeDetectorRef,
-  Component,
-  Input
+  Component, EventEmitter,
+  Input, Output
 } from '@angular/core';
 import {Document} from '../../core/models/document.model';
 import {Annotation} from '../../core/models/annotation.model';
@@ -16,6 +16,7 @@ import {fromEvent, takeUntil, tap} from 'rxjs';
 })
 export class DocumentComponent {
   @Input() document!: Document;
+  @Output() documentChanged = new EventEmitter<Document>();
   public newAnnotationText = '';
   public newAnnotationImageUrl = '';
 
@@ -42,7 +43,8 @@ export class DocumentComponent {
     newDocument.pages[pageIndex].annotations[annotationIndex].type = 'text';
     // @ts-ignore
     newDocument.pages[pageIndex].annotations[annotationIndex].content = this.newAnnotationText;
-    this.document = newDocument;
+    // this.document = newDocument;
+    this.documentChanged.next(newDocument);
   }
 
   public handleSaveAnnotationAsImage(pageIndex:number, annotationIndex: number) {
@@ -51,14 +53,16 @@ export class DocumentComponent {
     newDocument.pages[pageIndex].annotations[annotationIndex].type = 'image';
     // @ts-ignore
     newDocument.pages[pageIndex].annotations[annotationIndex].content = this.newAnnotationImageUrl;
-    this.document = newDocument;
+    // this.document = newDocument;
+    this.documentChanged.next(newDocument);
   }
 
   public handleRemoveAnnotation($event: Event, pageIndex: number, annotationIndex: number) {
     $event.stopPropagation();
     const newDocument = {...this.document};
     newDocument.pages[pageIndex].annotations?.splice(annotationIndex, 1);
-    this.document = newDocument;
+    // this.document = newDocument;
+    this.documentChanged.next(newDocument);
   }
 
   public emptyHandler($event: Event) {
@@ -75,7 +79,8 @@ export class DocumentComponent {
       const newDocument = {...this.document};
       // @ts-ignore
       newDocument.pages[pageIndex].annotations[annotationIndex].coordinates = [event.offsetX, event.offsetY];
-      this.document = newDocument;
+      // this.document = newDocument;
+      this.documentChanged.next(newDocument);
     })
   }
 

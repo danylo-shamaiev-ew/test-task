@@ -24,4 +24,12 @@ export class ViewerComponent {
       this.document = document;
     });
   }
+
+  public handleDocumentChange(document: Document) {
+    this.document = {...document};
+  }
+
+  public handleDocumentSave() {
+    console.log('Document result: ', JSON.stringify(this.document));
+  }
 }

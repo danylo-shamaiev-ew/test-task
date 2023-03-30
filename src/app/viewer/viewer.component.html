@@ -1,7 +1,9 @@
 <header>
   <div class="logo-text">Document Viewer</div>
-  <div class="viewer-controls"></div>
+  <div class="viewer-controls">
+    <input type="button" value="Save" (click)="handleDocumentSave()">
+  </div>
 </header>
 <main>
-  <app-document [document]="document" />
+  <app-document [document]="document" (documentChanged)="handleDocumentChange(document)" />
 </main>
