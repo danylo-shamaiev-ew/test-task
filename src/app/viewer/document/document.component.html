@@ -1,12 +1,13 @@
 <div
   class="document-page"
   *ngFor="let page of document?.pages; let p = index"
+  [id]="'page-' + p"
   (click)="handleAddAnnotation($event, p)"
 >
   <div
     *ngFor="let annotation of page?.annotations; let a = index"
     class="annotation"
-    [ngStyle]="calculateAnnotationNgStyle(page, annotation, a)"
+    [ngStyle]="calculateAnnotationNgStyle(annotation)"
     (mousedown)="handleAnnotationDrag($event, p, a)"
     (click)="emptyHandler($event)"
   >
@@ -26,5 +27,5 @@
       <input class="save-image" type="button" value="Save image" (click)="handleSaveAnnotationAsImage(p, a)">
     </div>
   </div>
-  <img [src]="page.imageUrl" [alt]="'Page ' + (p + 1)" [ngStyle]="calculateNegativeMargin(page)">
+  <img [src]="page.imageUrl" [alt]="'Page ' + (p + 1)" >
 </div>

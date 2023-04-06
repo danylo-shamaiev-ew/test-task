@@ -10,11 +10,17 @@
 }
 
 .document-page {
+  position: sticky;
+  pointer-events: none;
+}
 
+.hidden {
+  visibility: hidden;
 }
 
 .annotation {
-  position: relative;
+  pointer-events: all;
+  position: absolute;
   z-index: 99;
   background-color: yellow;
   opacity: 75%;
