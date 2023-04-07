@@ -60,7 +60,9 @@ export class DocumentComponent {
 
   public handleSaveAnnotationAsText() {
     const newDocument = {...this.document};
-    if (!newDocument.pages[this.selectedPageIndex].annotations) return;
+    if (!newDocument.pages[this.selectedPageIndex].annotations) {
+      newDocument.pages[this.selectedPageIndex].annotations = [];
+    }
     const pageAnnotations = newDocument.pages[this.selectedPageIndex].annotations as Annotation[];
     pageAnnotations.push({
       coordinates: this.selectedPageCoordinates,
@@ -75,7 +77,9 @@ export class DocumentComponent {
 
   public handleSaveAnnotationAsImage(base64Image: string) {
     const newDocument = {...this.document};
-    if (!newDocument.pages[this.selectedPageIndex].annotations) return;
+    if (!newDocument.pages[this.selectedPageIndex].annotations) {
+      newDocument.pages[this.selectedPageIndex].annotations = [];
+    }
     const pageAnnotations = newDocument.pages[this.selectedPageIndex].annotations as Annotation[];
     pageAnnotations.push({
       coordinates: this.selectedPageCoordinates,
