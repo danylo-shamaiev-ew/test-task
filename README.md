@@ -20,6 +20,7 @@ The app works now as expected, the performance was improved drastically, and the
 1. ~~When the sticker is moved, its appearance is twitchy.~~
 2. ~~When the sticker is moved, a new sticker might be created.~~
 3. ~~Image stickers do look not so good.~~
+4. New Annotation menu doesn't disappear on scroll
 
 ### What should be done
 1. It would be better to take some library for sticky note manipulation, rather than re-inventing it.
