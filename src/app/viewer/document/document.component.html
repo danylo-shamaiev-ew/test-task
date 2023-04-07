@@ -1,3 +1,22 @@
+<div class="new-annotation hidden" #newAnnotation>
+  <span class="annotation-close-button" (click)="handleHideNewAnnotation($event)">X</span>
+  <div class="buttons">
+    <button (click)="handleAddNewTextAnnotation($event)">Text</button>
+    <button (click)="handleAddNewImageAnnotation($event)">Image</button>
+  </div>
+</div>
+<div class="new-annotation hidden" #newTextAnnotation>
+  <span class="annotation-close-button" (click)="handleHideNewTextAnnotation($event)">X</span>
+  <textarea
+    placeholder="Type here..."
+    [(ngModel)]="newAnnotationText"
+    (keydown.enter)="handleSaveAnnotationAsText()"
+  ></textarea>
+</div>
+<div class="new-annotation hidden" #newImageAnnotation>
+  <span class="annotation-close-button" (click)="handleHideNewImageAnnotation($event)">X</span>
+  <input type="file" accept=".jpg, .png, .jpeg|image/*" (change)="handleImageUpload($event)">
+</div>
 <div
   class="document-page"
   *ngFor="let page of document?.pages; let p = index"
@@ -12,20 +31,15 @@
     (click)="emptyHandler($event)"
   >
     <span class="annotation-close-button" (click)="handleRemoveAnnotation($event, p, a)">X</span>
-    <div class="annotation-content" *ngIf="annotation.type === 'text'">{{annotation.content}}</div>
+    <div class="annotation-content" *ngIf="annotation.type === 'text'">
+      {{ annotation.content }}
+    </div>
     <img
       class="annotation-content"
+      *ngIf="annotation.type === 'image'"
       [src]="annotation.content"
       alt="annotation image"
-      *ngIf="annotation.type === 'image'"
-    >
-    <div *ngIf="!annotation.type">
-      <textarea placeholder="Type here..." [(ngModel)]="newAnnotationText"></textarea>
-      <input type="button" value="Save" (click)="handleSaveAnnotationAsText(p, a)">
-      <p>or</p>
-      <input type="url" placeholder="Type image URL..." [(ngModel)]="newAnnotationImageUrl">
-      <input class="save-image" type="button" value="Save image" (click)="handleSaveAnnotationAsImage(p, a)">
-    </div>
+    />
   </div>
-  <img [src]="page.imageUrl" [alt]="'Page ' + (p + 1)" >
+  <img [src]="page.imageUrl" [alt]="'Page ' + (p + 1)" />
 </div>

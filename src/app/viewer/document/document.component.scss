@@ -11,7 +11,6 @@
 
 .document-page {
   position: sticky;
-  pointer-events: none;
 }
 
 .hidden {
@@ -19,7 +18,6 @@
 }
 
 .annotation {
-  pointer-events: all;
   position: absolute;
   z-index: 99;
   background-color: yellow;
@@ -32,18 +30,25 @@
     cursor: grabbing;
   }
 
-  textarea {
-    width: 98%;
-    max-width: 98%;
-  }
-
-  .save-image {
-    margin-top: 8px;
-  }
-
   img {
     display: block;
     height: 96%;
+  }
+}
+
+.new-annotation {
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  z-index: 99;
+  background-color: blue;
+  opacity: 75%;
+  padding: 8px;
+  user-select: none;
+
+  textarea {
+    width: 98%;
+    max-width: 98%;
   }
 }
 

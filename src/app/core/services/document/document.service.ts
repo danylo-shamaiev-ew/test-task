@@ -11,7 +11,7 @@ export class DocumentService {
   public getDocument(id: string): Observable<Document> {
     // Let's pretend there is a real API call :)
     return of({
-      id: 1,
+      id: +id,
       pages: [
         {
           imageUrl: '../../../../assets/example-document/1.png',
