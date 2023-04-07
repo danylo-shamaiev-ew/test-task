@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'viewer'
+    redirectTo: 'viewer/1'
   }
 ];
 
