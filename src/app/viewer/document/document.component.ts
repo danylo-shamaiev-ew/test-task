@@ -69,6 +69,7 @@ export class DocumentComponent {
       type: 'text',
     });
     this.newTextAnnotation.nativeElement.classList.add('hidden');
+    this.newTextAnnotation.nativeElement.getElementsByTagName('textarea')[0].value = '';
     this.documentChanged.next(newDocument);
   }
 
@@ -83,6 +84,7 @@ export class DocumentComponent {
       type: 'image',
     });
     this.newImageAnnotation.nativeElement.classList.add('hidden');
+    this.newImageAnnotation.nativeElement.getElementsByTagName('input')[0].value = '';
     this.documentChanged.next(newDocument);
   }
 
